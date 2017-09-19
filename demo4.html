@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相对定位于绝对定位</title>
+    <!--
+    相对定位：相对于元素在文档流中的初始位置。占据空间
+    绝对定位：相对于距离它最近的已定位祖先元素，如果不存在已定位的祖先元素，那么相对于初始包含块【画布或者HTML元素】
+    -->
+    <style>
+        body{
+            border: solid 1px darkblue;
+        }
+        body>div{
+            margin: 30px;
+            border: solid 1px darkred;
+        }
+        div>div{
+            width: 50px;
+            height: 50px;
+        }
+        body>div:first-child>div{
+            border:solid 1px rosybrown;
+        }
+        body>div:nth-child(2)>div{
+            border:solid 1px bisque;
+        }
+        body>div:last-child>div{
+            border:solid 1px aqua;
+        }
+    </style>
+</head>
+<body>
+body
+<div>
+    相对定位
+    <div>1</div>
+    <div style="position: relative;top: 20px;left: 20px;">2</div>
+    <div>3</div>
+</div>
+<div style="position: relative">
+    绝对定位:相对祖先元素定位
+    <div>1</div>
+    <div style="position: absolute;top: 50px;left: 50px;">2</div>
+    <div>3</div>
+</div>
+<div>
+    绝对定位：相对初始包含块定位
+    <div>1</div>
+    <div style="position: absolute;top: 50px;left: 50px;">2</div>
+    <div>3</div>
+</div>
+</body>
+</html>

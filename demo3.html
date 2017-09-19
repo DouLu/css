@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>行内元素display:inline</title>
+    <!--
+    行内元素：a,b,strong,span,img,label,button,input,select,textarea
+    块级元素：header,form,ul,ol,table,article,div,hr,aside,figure,canvas,video,audio,footer
+    display:inline-block:行内元素和块级元素特性兼而有之，既不会占满父元素，又可以设置width和height属性
+    -->
+    <style>
+        /*对行内元素设置宽高，没有影响。设置垂直内边距、边框、外边距也不会影响高度。
+        使用line-height改变高度
+        设置水平内边距、边框、外边距可以调整水平间距*/
+        span{
+            /*width: 200px;
+            height: 30px;*/
+            /*line-height: 30px;*/
+            padding: 20px;
+            border: solid 1px salmon;
+            margin: 20px;
+        }
+        div,p{
+            border: solid 1px seagreen;
+        }
+        .first-line::first-line{
+            background-color: powderblue;
+        }
+        .first-line p::first-line{
+            background-color: saddlebrown;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <span>span span</span>
+    <span>span span</span>
+</div>
+<p>段落 段落</p>
+<div class="first-line">
+    To stop the degradation of the planet's natural environment and to build a future in which humans live in harmony with nature, by; conserving the world's biological diversity, ensuring that the use of renewable natural resources is sustainable, and promoting the reduction of pollution and wasteful consumption.
+    <p>
+        To stop the degradation of the planet's natural environment and to build a future in which humans live in harmony with nature, by; conserving the world's biological diversity, ensuring that the use of renewable natural resources is sustainable, and promoting the reduction of pollution and wasteful consumption.
+    </p>
+    <p>匿名块框</p>
+    <p>匿名块框</p>
+</div>
+</body>
+</html>
