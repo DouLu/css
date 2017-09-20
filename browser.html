@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器兼容问题</title>
+    <!--
+        webkit内核：Safari、安卓默认浏览器、chrome
+        Trident内核：代表作品是IE
+        Gecko内核：代表作品是Firefox
+        Presto内核：代表作品是Opera。2013年后Opera宣布加入谷歌阵营，弃用Presto内核
+        Blink内核：由Google和Opera Software开发的浏览器排版引擎，2013年4月发布。
+
+        1、-moz-：代表FireFox浏览器私有属性
+        2、-ms-：代表IE浏览器私有属性
+        3、-webkit-：代表safari、chrome浏览器私有属性
+        4、-o-：代表opera浏览器私有属性
+    -->
+    <style>
+        div{
+            width: 80px;
+            height: 80px;
+            border: solid 1px salmon;
+        }
+        .css-hack {
+            background-color: aquamarine; /* 其他浏览器显示红色 */
+        }
+        @-moz-document url-prefix() {
+            .css-hack {
+                background-color: #126daf; /* 只有FireFox显示为蓝色 */
+            }
+        }
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            .css-hack {
+                background-color: antiquewhite; /* Webkit内核浏览器显示蓝色 */
+            }
+        }
+        div img{
+            width: 80px;
+            height: 80px;
+            border: solid 1px salmon;
+        }
+        .gray-filter {
+            filter: grayscale(100%);
+            -webkit-filter: grayscale(100%);
+            -moz-filter: grayscale(100%);
+            -o-filter: grayscale(100%);
+            -ms-filter: grayscale(100%);
+            filter: gray;
+        }
+    </style>
+</head>
+<body>
+<div class="css-hack"></div>
+<div>原图<img src="img/day1.png" alt=""></div>
+<div>灰色滤镜图<img src="img/day1.png" alt="" class="gray-filter"></div>
+</body>
+</html>

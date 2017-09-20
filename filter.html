@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3滤镜</title>
+    <!--http://www.cssreflex.com/css-generators/filter-->
+    <!--chrome浏览器支持、firefox支持、IE不支持-->
+    <style>
+        div img{
+            width: 80px;
+            height: 80px;
+            border: solid 1px salmon;
+        }
+        .gray-filter {
+            filter: grayscale(100%);
+            -webkit-filter: grayscale(100%);
+            -moz-filter: grayscale(100%);
+            -o-filter: grayscale(100%);
+            -ms-filter: grayscale(100%);
+            filter: gray;
+        }
+        .filter{
+            filter: blur(1px);
+            -webkit-filter:blur(1px);
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p>原图</p>
+    <img src="img/day1.png" alt="">
+</div>
+<div>
+    <p>灰色滤镜图</p>
+    <img src="img/day1.png" alt="" class="gray-filter">
+</div>
+<div>
+    <p>滤镜模糊</p>
+    <img src="img/day1.png" alt="" class="filter">
+</div>
+</body>
+</html>
