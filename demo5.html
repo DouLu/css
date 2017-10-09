@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>居中方案</title>
+    <style>
+        div{
+            border: solid chocolate 1px;
+        }
+        .pp{
+            width: 400px;
+            height: 200px;
+            position: relative;
+            left: 50%;
+        }
+        .cc{
+            display: inline;
+            margin: auto;
+            position: relative;
+            left: 50%;
+        }
+        .f{
+            width: 400px;
+            height: 400px;
+            display: table;
+        }
+        .c{
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .box{
+            width: 400px;
+            height: 400px;
+            text-align: center;
+        }
+        .inner{
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .inner:before{
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 100%;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tbody>
+        <tr>
+            <td>
+                <div class="pp">
+                    <div class="cc">
+                        子元素宽度不定
+                    </div>
+                    <div class="cc">
+                        子元素宽度不定
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="pp">
+                    <div class="cc">
+                        子元素宽度不定
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+<div class="f">
+    <div class="c">垂直居中</div>
+</div>
+<div class="box">
+    <div class="inner">
+        <span>伪元素实现居中</span>
+        <!--<span>伪元素实现居中</span>
+        <span>伪元素实现居中</span>-->
+    </div>
+</div>
+</body>
+</html>
