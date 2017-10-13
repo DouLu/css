@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transform</title>
+    <!--
+        rotate、scale、translate、skew
+        http://www.w3cplus.com/content/css3-transform
+    -->
+    <style>
+        .wrap{
+            width: 100%;
+            height: 200px;
+            padding: 0 100px;
+            margin: 200px 0;
+            border: solid 1px sienna;
+            box-sizing: border-box;
+        }
+        .wrap:after{
+            clear: both;
+            display: block;
+            content: '';
+            width: 0;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+        }
+        .box{
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: #ff9966;
+        }
+        .box1{
+            transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform-origin: left top;/*变形中心*/
+        }
+        .box2{
+            transform: translate(100px,100px);
+        }
+        .box3{
+            transform: translateY(-100px);
+        }
+        .box4{
+            transform: scale(0.5,1.2);
+            transform-origin: right bottom;
+        }
+        .box5{
+            transform: skew(45deg);
+            transform-origin: left top;
+        }
+        .box6{
+            transform: skew(45deg,30deg);
+            transform-origin: left top;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="box box1">1</div>
+    <div class="box box2">2</div>
+    <div class="box box3">3</div>
+    <div class="box box4">4</div>
+    <div class="box box5">5</div>
+    <div class="box box6">6</div>
+</div>
+</body>
+</html>
