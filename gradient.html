@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test:after{
+            clear: both;
+            content: '';
+            display: block;
+            width:0;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+        }
+        .demo1{
+            float: left;
+            width: 200px;
+            height: 100px;
+            border: solid 1px aqua;
+        }
+        .demo1{
+            background: linear-gradient(top,#ccc,#000);
+        }
+    </style>
+</head>
+<body>
+<div class="test">
+    <div class="demo1"></div>
+</div>
+</body>
+</html>
