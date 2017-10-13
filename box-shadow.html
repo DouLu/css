@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*
+        E {box-shadow: <length> <length> <length>?<length>?||<color>}
+        也就是：
+        E {box-shadow:inset x-offset y-offset blur-radius spread-radius color}
+        换句说：
+        对象选择器 {box-shadow:投影方式 X轴偏移量 Y轴偏移量 阴影模糊半径 阴影扩展半径 阴影颜色}
+        多个投影使用逗号分隔。最先写的阴影将显示在最顶层。支持IE9及以上
+        -moz-box-shadow:
+        -webkit-box-shadow:
+        */
+        .clearfix:after {
+            clear: both;
+            content: ".";/*for FF/chrome/opera/IE8==*/
+            display: block;
+            width: 0;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+        }
+        .dome1,.dome2,.dome3,.dome4,.dome5,.dome6{
+            width: 100px;
+            height: 100px;
+            background-color: aliceblue;
+            float: left;
+            margin: 50px;
+        }
+        .dome1{
+            box-shadow: -2px 0 0 green,/*左边阴影*/
+            0 -2px 0 blue, /*顶部阴影*/
+            0 2px 0 red, /*底部阴影*/
+            2px 0 0 yellow; /*右边阴影*/
+        }
+        .dome2{
+            box-shadow: -2px 0 5px green,/*左边阴影*/
+            0 -2px 5px blue, /*顶部阴影*/
+            0 2px 5px red, /*底部阴影*/
+            2px 0 5px yellow; /*右边阴影*/
+        }
+        .dome3{
+            box-shadow: 0 0 5px rgba(250,0,0,0.5);
+        }
+        .dome4{
+            box-shadow: 0 0 5px 3px rgba(250,0,0,0.5);
+        }
+        .dome5{
+            box-shadow: inset 0 0 5px 3px rgba(250,0,0,0.5);
+        }
+        .img-wrap {
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin: 50px;
+            -webkit-box-shadow: inset 0 0 10px red;
+            -moz-box-shadow: inset 0 0 10px red;
+            box-shadow: inset 0 0 10px red;
+            display: inline-block;
+        }
+        .img-wrap img{
+            float: left;
+            position: relative;
+            z-index: -1;
+            width: 100px;
+            height: 100px;
+        }
+        .dome6{
+            position: relative;
+            display: inline-block;
+            *display: inline;
+        }
+        .dome6:before{
+            content:"";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -moz-box-shadow:inset 0 0 5px 1px red;
+            -webkit-box-shadow: inset 0 0 5px 1px red;
+            box-shadow: inset 0 0 5px 1px red;
+        }
+        .dome6 img{
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+        .wrap h3{
+            text-align:center;
+            position:relative;
+            top:80px;
+        }
+        .wrap {
+            width:70%;
+            height:200px;
+            background:#FFF;
+            margin:40px auto;
+        }
+        .effect{
+            position:relative;
+            -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3) , 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        }
+        .effect:before, .effect:after{
+            content:"";
+            position:absolute;
+            z-index:-1;
+            -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+            -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+            box-shadow:0 0 20px rgba(0,0,0,0.8);
+            top:50%;
+            bottom:0;
+            left:10px;
+            right:10px;
+            -moz-border-radius:100px / 10px;
+            border-radius:100px / 10px;
+        }
+        ul.box {
+            width:980px;
+            height:auto;
+            margin: 20px auto;
+            padding: 0;
+            clear: both;
+            overflow: hidden;
+        }
+        ul.box li {
+            list-style-type: none;
+            margin:20px 10px;
+            padding: 0;
+            width: 300px;
+            height: 220px;
+            border: 2px solid #efefef;
+            position: relative;
+            float: left;
+            background: #ffffff; /* old browsers */
+            line-height:220px;
+            font-size:32px;
+            text-align:center;
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+            -o-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+        }
+        ul.box li:before {
+            z-index: -2;
+            position: absolute;
+            background: transparent;
+            width: 90%;
+            height: 80%;
+            content: '';
+            left: 20px;
+            bottom:8px;
+            -webkit-transform: skew(-12deg) rotate(-4deg);
+            -moz-transform:skew(-12deg) rotate(-4deg);
+            -o-transform: skew(-12deg) rotate(-4deg);
+            -ms-transform: skew(-12deg) rotate(-4deg);
+            -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            -moz-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            -o-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+
+        }
+        ul.box li:after {
+            z-index: -1;
+            position: absolute;
+            background: transparent;
+            width: 90%;
+            height: 80%;
+            content: '';
+            right:20px;
+            bottom:8px;
+            -webkit-transform: skew(12deg) rotate(4deg);
+            -moz-transform:skew(12deg) rotate(4deg);
+            -o-transform: skew(12deg) rotate(4deg);
+            -ms-transform: skew(12deg) rotate(4deg);
+            -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            -moz-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            -o-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        }
+        .box li img{
+            width:290px;
+            height:210px;
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+<div class="test clearfix">
+    <div class="dome1"></div>
+    <div class="dome2"></div>
+    <div class="dome3"></div>
+    <div class="dome4"></div>
+    <div class="dome5"></div>
+    <div class="img-wrap">
+        <img src="img/day1.png">
+    </div>
+    <div class="dome6">
+        <img src="img/day1.png">
+    </div>
+</div>
+<div class="wrap effect">
+    <h3>Shadow Effect</h3>
+</div>
+<ul class="box">
+    <li><img src="img/photo1.jpg"/></li>
+    <li><img src="img/photo2.jpg"/></li>
+    <li><img src="img/photo3.jpg"/></li>
+</ul>
+</body>
+</html>
