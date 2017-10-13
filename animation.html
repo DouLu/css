@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animation</title>
+    <!--
+        animation:a-name,duration-time,ease-in-out,delay-time,iteration-count(infinite无限循环),direction(normal:向前播放，alternate:反向播放)
+    -->
+    <style>
+        .wrap{
+            height: 500px;
+            border: solid 1px aqua;
+        }
+        .box{
+            width: 50px;
+            height: 50px;
+            /*animation: animation1 5s ease infinite;*/
+            animation: animation1 5s ease 2;
+        }
+        @-webkit-keyframes animation1{
+            0% {
+                margin-left: 100px;
+                background: green;
+            }
+            40% {
+                margin-left: 150px;
+                background: orange;
+            }
+            60% {
+                margin-left: 75px;
+                background: blue;
+            }
+            100% {
+                margin-left: 100px;
+                background: red;
+            }
+        }
+        @keyframes animation1{
+            0% {
+                margin-left: 100px;
+                background: green;
+            }
+            40% {
+                margin-left: 150px;
+                background: orange;
+            }
+            60% {
+                margin-left: 75px;
+                background: blue;
+            }
+            100% {
+                margin-left: 100px;
+                background: red;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="box"></div>
+</div>
+</body>
+</html>
