@@ -3,8 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!--
+        1、设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效
+        2、容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）
+        3、webkit内核兼容
+    -->
+    <!--容器的属性
+        flex-direction、flex-wrap、flex-flow、
+        justify-content、align-items、align-content
+        1、flex-direction属性决定主轴的方向（即项目的排列方向）
+        2、flex-wrap属性定义，如果一条轴线排不下，如何换行
+        3、flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap
+        4、justify-content属性定义了项目在主轴上的对齐方式【水平对齐方式】
+        5、align-items属性定义项目在交叉轴上如何对齐【垂直对齐方式】
+        6、align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用【当换行时，起作用】
+    -->
+    <!--项目上的属性
+        1、order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0
+        2、flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大【等分剩余空间，或者按比例平分剩余空间】
+        3、flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小
+        4、flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小
+        5、flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+        6、align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。
+        默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
+    -->
+    <style>
+        .box{
+            display: flex;/*inline-flex*/
+            display: -webkit-flex;/*webkit内核一定要加*/
+            /*flex-direction:column;
+            flex-wrap: wrap;*/
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
+        .box li{
+            flex-grow: 1;
+        }
+        .item{
+            order:-1;
+            /*flex-grow: 2;!*2倍放大*!
+            flex-shrink: 2;
+            flex-basis: 300px;
+            -webkit-flex-basis: 300px;*/
+            flex:2 2 auto;
+            -webkit-flex: 2 2 auto;
+            align-self: flex-end;
+        }
+        ul.box li {
+            list-style-type: none;
+            margin:20px 10px;
+            padding: 0;
+            /*width: 300px;*/
+            /*height: 220px;*/
+            border: 2px solid #efefef;
+            position: relative;
+            float: left;
+            background: #ffffff; /* old browsers */
+            line-height:220px;
+            font-size:32px;
+            text-align:center;
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+            -o-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+        }
+        /*ul.box li:before {
+            z-index: -2;
+            position: absolute;
+            background: transparent;
+            width: 90%;
+            height: 80%;
+            content: '';
+            left: 20px;
+            bottom:8px;
+            -webkit-transform: skew(-12deg) rotate(-4deg);
+            -moz-transform:skew(-12deg) rotate(-4deg);
+            -o-transform: skew(-12deg) rotate(-4deg);
+            -ms-transform: skew(-12deg) rotate(-4deg);
+            -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            -moz-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            -o-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+
+        }
+        ul.box li:after {
+            z-index: -1;
+            position: absolute;
+            background: transparent;
+            width: 90%;
+            height: 80%;
+            content: '';
+            right:20px;
+            bottom:8px;
+            -webkit-transform: skew(12deg) rotate(4deg);
+            -moz-transform:skew(12deg) rotate(4deg);
+            -o-transform: skew(12deg) rotate(4deg);
+            -ms-transform: skew(12deg) rotate(4deg);
+            -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            -moz-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            -o-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        }*/
+        .box li img{
+            width:290px;
+            height:210px;
+            padding:5px;
+        }
+    </style>
 </head>
 <body>
-
+<ul class="box">
+    <li>
+        <p>title1</p>
+        <img src="img/photo1.jpg"/>
+    </li>
+    <li>
+        <p>title2</p>
+        <img src="img/photo2.jpg"/>
+    </li>
+    <li>
+        <p>title3</p>
+        <img src="img/photo3.jpg"/>
+    </li>
+    <li>
+        <p>title4</p>
+        <img src="img/photo1.jpg"/>
+    </li>
+    <li>
+        <p>title5</p>
+        <img src="img/photo2.jpg"/>
+    </li>
+    <li>
+        <p>title6</p>
+        <img src="img/photo3.jpg"/>
+    </li>
+    <li>
+        <p>title7</p>
+        <img src="img/photo1.jpg"/>
+    </li>
+    <li>
+        <p>title8</p>
+        <img src="img/photo2.jpg"/>
+    </li>
+    <li>
+        <p>title9</p>
+        <img src="img/photo3.jpg"/>
+    </li>
+    <li class="item">
+        <p>item</p>
+        <img src="img/photo3.jpg"/>
+    </li>
+</ul>
 </body>
 </html>
