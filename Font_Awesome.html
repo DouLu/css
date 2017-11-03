@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    http://www.okbase.net/doc/details/484623
+    -->
+    <meta charset="UTF-8">
+    <title>Font Awesome的使用方法</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.css">
+    <!--图标大小：fa-lg,fa-2x,fa-3x,fa-4x,fa-5x-->
+</head>
+<body>
+<div class="row">
+    <a class="btn btn-danger" href="#">
+        <i class="fa fa-trash-o fa-lg"></i> Delete</a>
+    <a class="btn btn-default btn-sm" href="#">
+        <i class="fa fa-cog"></i> Settings</a>
+    <a class="btn btn-lg btn-success" href="#">
+        <i class="fa fa-flag fa-2x pull-left"></i> Font Awesome<br>Version 4.4.0</a>
+    <div class="btn-group">
+        <a class="btn btn-default" href="#"><i class="fa fa-align-left"></i></a>
+        <a class="btn btn-default" href="#"><i class="fa fa-align-center"></i></a>
+        <a class="btn btn-default" href="#"><i class="fa fa-align-right"></i></a>
+        <a class="btn btn-default" href="#"><i class="fa fa-align-justify"></i></a>
+    </div>
+    <div class="input-group margin-bottom-sm">
+        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+        <input class="form-control" type="text" placeholder="Email address">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+        <input class="form-control" type="password" placeholder="Password">
+    </div>
+    <div class="btn-group open">
+        <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> User</a>
+        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+            <span class="fa fa-caret-down"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="#"><i class="fa fa-pencil fa-fw"></i> Edit</a></li>
+            <li><a href="#"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
+            <li><a href="#"><i class="fa fa-ban fa-fw"></i> Ban</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="i"></i> Make admin</a></li>
+        </ul>
+    </div>
+</div>
+<!--多个图标叠加
+要将多个图标堆叠在一起，可以在父元素上使用class fa-stack，fa-stack-1x是正常的图标尺寸，fa-stack-2x是大尺寸的图标。
+fa-inverse可以反转图标的颜色。在父元素还可以使用fa-lg等图标尺寸来设置图标的尺寸。
+-->
+<div class="row" style="margin: 20px;">
+    <span class="fa-stack fa-lg">
+        <i class="fa fa-square-o fa-stack-2x"></i>
+        <i class="fa fa-twitter fa-stack-1x"></i>
+    </span>
+    fa-twitter on fa-square-o<br>
+
+    <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+    </span>
+    fa-flag on fa-circle<br>
+
+    <span class="fa-stack fa-lg">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-terminal fa-stack-1x fa-inverse"></i>
+    </span>
+    fa-terminal on fa-square<br>
+
+    <span class="fa-stack fa-lg">
+        <i class="fa fa-camera fa-stack-1x"></i>
+        <i class="fa fa-ban fa-stack-2x text-danger"></i>
+    </span>
+    fa-ban on fa-camera
+</div>
+<!--图标旋转
+使用fa-spin类旋转图标,使用class fa-pulse可以使图标以8步为周期进行旋转。可以完美执行旋转动画的图标有：fa-spinner，fa-refresh和fa-cog。
+-->
+<div style="margin: 20px;">
+    <i class="fa fa-5x fa-spinner fa-spin"></i>
+    <i class="fa fa-5x fa-circle-o-notch fa-spin"></i>
+    <i class="fa fa-5x fa-refresh fa-spin"></i>
+    <i class="fa fa-5x fa-cog fa-spin"></i>
+    <i class="fa fa-5x fa-spinner fa-pulse"></i>
+</div>
+<!--
+边框和引号:使用fa-border 和 fa-pull-right（右引号）或 fa-pull-left（左引号）
+-->
+<div style="margin: 20px;">
+    <i class="fa fa-quote-left fa-3x fa-pull-left fa-border"></i>
+
+    <i class="fa fa-quote-left fa-pull-left fa-3x"></i>
+    <i class="fa fa-quote-right fa-3x"></i>
+    <i class="fa fa-quote-right fa-pull-right fa-3x"></i>
+    <i class="fa fa-border fa-3x"></i>
+</div>
+<!--列表图标fa-ul、fa-li-->
+<div style="margin: 20px;">
+    <ul class="fa-ul">
+        <li><i class="fa-li fa fa-check-square"></i>List icons</li>
+        <li><i class="fa-li fa fa-check-square"></i>can be used</li>
+        <li><i class="fa-li fa fa-spinner fa-spin"></i>as bullets</li>
+        <li><i class="fa-li fa fa-square"></i>in lists</li>
+    </ul>
+</div>
+<!--固定宽度图标：使用fa-fw
+.fa-fw {
+    width: 1.28571429em;
+    text-align: center;
+}
+-->
+<div class="list-group">
+    <a class="list-group-item" href="#"><i class="fa fa-home fa-fw"></i>&nbsp; Home</a>
+    <a class="list-group-item" href="#"><i class="fa fa-book fa-fw"></i>&nbsp; Library</a>
+    <a class="list-group-item" href="#"><i class="fa fa-pencil fa-fw"></i>&nbsp; Applications</a>
+    <a class="list-group-item" href="#"><i class="fa fa-cog fa-fw"></i>&nbsp; Settings</a>
+</div>
+</body>
+</html>
