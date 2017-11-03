@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="reset/reset.css">
+
+    <!--
+    建立3D平面：
+    1、transform-style: preserve-3d; 3d空间
+    2、perspective: 800px; 它被成为视距或者景深
+    3、perspective-origin:50% 50%;
+    -->
+
+    <style>
+        /*body{
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }*/
+        .td-box{
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        .card-box{
+            position: relative;
+            width: 300px;
+            height: 213px;
+            margin:  100px auto;
+            transform-style: preserve-3d;
+            transition: 2s;
+        }
+        .card-box:hover{
+            transform: rotateY(180deg);
+        }
+        .card{
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 300px;
+            height: 213px;
+        }
+        .zm{
+            transform:rotateY(180deg);
+            background: url("img/photo1.jpg") no-repeat center;
+            background-size: cover;
+        }
+        .fm{
+            /*设置后面的可适度为看不见*/
+            backface-visibility: hidden;
+            background: url("img/photo2.jpg") no-repeat center;
+            background-size: cover;
+        }
+
+
+        img{
+            width: 200px;
+            height: 200px;
+        }
+        #box{
+            perspective: 800px;
+            transform-style: preserve-3d;
+            transition:  5s infinite;
+            transform:rotateX(0deg) rotateY(0deg);
+        }
+        .mofang_box{
+            width: 200px;
+            height: 200px;
+            margin: 100PX auto;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: 50s;
+            transform:rotateX(45deg)rotateY(45deg);
+        }
+        .mofang_box:hover{
+            transform:rotateX(3600deg)rotateY(3600deg);
+        }
+        .mofang{
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            position: absolute;
+
+        }
+        /*原来这六个面的div是叠加在一起的通过旋转 移动来让他们形成正方体*/
+        .left{
+              transform:rotateY(90deg)translateZ(-100px);
+          }
+        .right{
+            transform:rotateY(90deg)translateZ(100px);
+        }
+        .top{
+            transform:rotateX(90deg)translateZ(100px)rotateZ(360deg);
+        }
+        .buttom{
+            transform:rotateX(90deg)translateZ(-100px)rotateZ(180deg);
+        }
+        .hou{
+            transform:rotateX(0deg)translateZ(-100px)rotateZ(180deg);
+        }
+        .qian{
+            transform:rotateX(0deg)translateZ(100px);
+        }
+    </style>
+</head>
+<body>
+<div class="td-box">
+    <div class="card-box">
+        <div class="card zm">
+            <!--<img src="img/photo1.jpg" alt="卡片正面">-->
+        </div>
+        <div class="card fm">
+            <!--<img src="img/photo2.jpg" alt="卡片反面">-->
+        </div>
+    </div>
+</div>
+<div id="box">
+    <div class="mofang_box" id="mofang_box">
+        <div class="mofang qian"><img src="img/photo1.jpg"></div>
+        <div class="mofang hou"><img src="img/photo2.jpg"></div>
+        <div class="mofang left"><img src="img/photo3.jpg"></div>
+        <div class="mofang right"><img src="img/wallpaper-0032.jpg"></div>
+        <div class="mofang top"><img src="img/wallpaper-0033.jpg"></div>
+        <div class="mofang buttom"><img src="img/wallpaper-0077.jpg"></div>
+    </div>
+</div>
+<script rel="script">
+    /*window.onload=function(){
+        var box=document.getElementById("box");
+        var wutai =box.getElementsByClassName("wutai");
+        var gs=5;//遍历的div
+        var neirong= '<div class="wutai"><div class="mofang qian"></div><div class="mofang hou"></div><div class="mofang left"></div><div class="mofang right"></div><div class="mofang top"></div><div class="mofang buttom"></div></div>';    //遍历的HTML
+        var dom="";
+        for(var i=0;i<gs;i++){
+            dom+=neirong;//循环遍历div的个数
+        }
+        box.innerHTML=dom;// 将遍历的div放入html中
+        var dian=0;
+        box.onclick=function(){
+            dian++;
+            var jiaodu=dian*90;
+            for(var i=0;i<gs;i++){
+                wutai[i].style="transition:transform 1s"+100*i+"ms;transform:rotateX("+jiaodu+"deg)";//设置延迟时间和旋转的度数
+            }
+        }
+        setInterval(function(){
+            dian++;
+            var jiaodu=dian*90;
+            for(var i=0;i<gs;i++){
+                wutai[i].style="transition:transform 1s"+100*i+"ms;transform:rotateX("+jiaodu+"deg)";
+            }
+        },3000)//设置计时器让dome自己运动起来
+    }*/
+</script>
+</body>
+</html>
