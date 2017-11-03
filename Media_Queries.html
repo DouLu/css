@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--http://colly.com/-->
+
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="small.css" />
+    <link rel="stylesheet" media="only screen and (-webkit-min-device-pixel-ratio: 2)" type="text/css" href="iphone4.css" />
+    <!--ipad不同方向-->
+    <link rel="stylesheet" media="all and (orientation:portrait)" href="portrait.css">
+    <link rel="stylesheet" media="all and (orientation:landscape)" href="landscape.css">　
+    <style>
+        .class{
+            width: 400px;
+            height: 400px;
+            margin: 40px auto;
+            background-color: #aaccee;
+        }
+        @media screen and (max-width: 600px) {
+            .class {
+                background: #ccc;
+            }
+        }
+        @media screen and (min-width: 600px) and (max-width: 900px) {
+            .class {
+                background: #333;
+            }
+        }
+        /*设备实际分辨率*/
+        @media screen and (max-device-width: 480px) {
+            .class {
+                background: #000;
+            }
+        }　
+    </style>
+</head>
+<body>
+<div class="class">
+
+</div>
+</body>
+</html>
