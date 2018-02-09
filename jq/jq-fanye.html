@@ -1,0 +1,94 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>翻纸效果文字-jq22.com</title>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<style>
+body {
+	background:#15836D;
+	text-align:center;
+}
+.paper-text {
+	color:#fff;
+	font-size:100px;
+	font-weight:bold;
+	font-family:Microsoft yahei;
+}
+.paper-text >span {
+	display:inline-block;
+	position:relative;
+	-webkit-transform-style:preserve-3d;
+	transform-style:preserve-3d;
+	-webkit-perspective:500;
+	perspective:500;
+	-webkit-font-smoothing:antialiased;
+}
+.paper-text span>span:first-child,.paper-text span>span:last-child {
+	position:absolute;
+	top:0;
+	left:-1px;
+	-webkit-transform-origin:left top;
+	-ms-transform-origin:left top;
+	transform-origin:left top;
+	-webkit-transition:all ease-out 0.3s;
+	transition:all ease-out 0.3s;
+}
+.paper-text span>span:first-child {
+	z-index:1;
+	color:rgba(0,0,0,0.2);
+	-webkit-transform:scale(1.1,1) skew(0deg,20deg);
+	-ms-transform:scale(1.1,1) skew(0deg,20deg);
+	transform:scale(1.1,1) skew(0deg,20deg);
+}
+.paper-text span>span:last-child {
+	z-index:2;
+	color:#EFEFEF;
+	text-shadow:-1px 0 1px #684da3,1px 0 1px rgba(0,0,0,0.8);
+	-webkit-transform:rotateY(-40deg);
+	transform:rotateY(-40deg);
+}
+.paper-text span:hover>span:first-child {
+	-webkit-transform:scale(1.1,1) skew(0deg,5deg);
+	-ms-transform:scale(1.1,1) skew(0deg,5deg);
+	transform:scale(1.1,1) skew(0deg,5deg);
+}
+.paper-text span:hover>span:last-child {
+	-webkit-transform:rotateY(-10deg);
+	transform:rotateY(-10deg);
+}
+.paper-text >span + span {
+	margin-left:0.1em;
+}
+</style>
+</head>
+<body>
+<a id="paperText" href="#"></a>
+
+
+<script>
+/**
+ *基于css3的翻纸文字效果
+ *zhengyong
+ *
+ */
+(function($) {
+    $.fn.paper = function(text) {
+        if (!text) {
+            return;
+        }
+        var texts = text.split("");
+        var html = '';
+        for (var i = 0; i < texts.length; i++) {
+            html += '<span><span>' + texts[i] + '</span>' + texts[i] + '<span>' + texts[i] + '</span></span>';
+        };
+        this.addClass('paper-text').html(html);
+    }
+})(jQuery)
+
+//调用
+$('#paperText').paper('翻纸效果文字!');
+</script>
+
+</body>
+</html>
