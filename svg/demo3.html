@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变换矩阵——对角矩阵</title>
+</head>
+<body>
+<svg width="50%" height="50%" viewBox="0 0 150 120" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+    <filter id="colorMatrix">
+        <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0
+           0 1 0 0 0
+           0 0 1 0 0
+           0 0 0 1 0" />
+    </filter>
+    <g filter="">
+        <circle cx="30" cy="30" r="20" fill="red" fill-opacity="0.5" />
+    </g>
+    <g filter="url(#colorMatrix)">
+        <circle cx="80" cy="30" r="20" fill="red" fill-opacity="0.5" />
+    </g>
+</svg>
+</body>
+</html>
