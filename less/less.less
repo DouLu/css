@@ -1,0 +1,220 @@
+/*Importing*/
+@import "test.less";
+@import "test.css";
+//字符串插值
+@base-url: "http://assets.fnord.com";
+img{
+  background-image: url("@{base-url}/images/bg.png");
+}
+//JavaScript 表达式
+/*@str: "hello";
+@hel: ~`"@{str}".toUpperCase() + '!'`;
+@height: ~`document.body.clientHeight`;*/
+/*.content-box{
+  content: @hel;
+  height: @height;
+}*/
+
+//变量,运算，用变量名定义为变量
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+@font-size: 16px;
+@fnord: "I am fnord.";
+@var: 'fnord';
+#header { color: @light-blue; }
+.content:before{
+  position: absolute;
+  content: @@var;
+}
+//混合，类里面引用类
+.bordered{
+  border: solid 1px #ccc;
+}
+#menu a {
+  color: #111;
+  .bordered;
+}
+.post a {
+  color: red;
+  .bordered;
+}
+//带参数混合
+.border-radius1 (@radius) {
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+//设置默认值
+.border-radius2 (@radius: 5px) {
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+.button {
+  .border-radius1(6px);
+}
+#header {
+  .border-radius2;
+}
+.post{
+  .border-radius2(10px);
+}
+//不带参数
+.ellipsis(){
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ellipsis3(){
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.wrap () {
+  text-wrap: normal;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  word-wrap: break-word;
+}
+pre { .wrap }
+p{
+  .ellipsis3;
+}
+div p{
+  .ellipsis;
+}
+//@arguments包含了所有传递进来的参数
+.box-shadow (@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+div{
+  .ellipsis;
+  .box-shadow(2px, 6px);
+}
+//模式匹配和导引表达式,根据传入的参数来改变混合的默认呈现
+@switch: dark;
+
+.mixin (dark, @color) {
+  color: darken(@color, 10%);
+}
+.mixin (light, @color) {
+  color: lighten(@color, 10%);
+}
+//接受任意值
+.mixin (@_, @color) {
+  display: block;
+}
+//多个值匹配
+.midW(min,max,@wh){
+  width: @wh;
+}
+.class {
+  .mixin(@switch, #888);
+}
+div{
+  .class;
+  .midW(min,max,300px);
+}
+//引导,when关键字用以定义一个导引序列
+//关键字true只表示布尔真值
+//除去关键字true以外的值都被视示布尔假
+//导引序列使用逗号‘,’—分割，当且仅当所有条件都符合时，才会被视为匹配成功。
+.mixin (@a) when (lightness(@a) >= 50%) {
+  background-color: black;
+}
+.mixin (@a) when (lightness(@a) < 50%) {
+  background-color: white;
+}
+.mixin (@a) when (lightness(@a) > 40%),(lightness(@a) < 60%) {
+  background-color: white;
+  opacity: .5;
+}
+.max (@a, @b) when (@a > @b) { width: @a }
+.max (@a, @b) when (@a < @b) { width: @b }
+.mixin (@a) {
+  color: @a;
+}
+.class1 { .mixin(#ddd) }
+.class2 { .mixin(#555) }
+.isDark(@a) when (@a = true){
+  color: #000;
+}
+.isDark(@a){
+  color: #fff;
+}
+.isDark1{
+  .isDark(40);
+}
+.isDark2{
+  .isDark(true);
+}
+//嵌套规则,&表示串联选择器，而非子代选择
+header{
+  color: black;
+  .navigation {
+    font-size: 12px;
+    li{
+      color: darkgrey;
+      &.active{
+        color: red;
+      }
+    }
+  }
+  .logo {
+    width: 300px;
+    &:hover { text-decoration: none }
+  }
+}
+//运算，任何数字、颜色或者变量都可以参与运算
+@base: 5%;
+@filler: @base * 2;
+@other: @base + @filler;
+.t{
+  color: #888 / 4;
+  background-color: @nice-blue + #111;
+  height: 100% / 2 + @filler;
+  width: (50% - 20px)*2 + 100px;
+}
+//命名空间
+#bundle {
+  .button () {
+    display: block;
+    border: 1px solid black;
+    background-color: grey;
+    &:hover { background-color: white }
+  }
+  .input {
+    width: 100%;
+    height: 30px;
+    border: none;
+    outline: none;
+  }
+  .textarea{
+    font-family: "Adobe Caslon Pro";
+  }
+}
+#header a {
+  color: orange;
+  #bundle > .button;
+}
+header{
+  textarea,input{
+    #bundle > .input;
+  }
+  textarea{
+    #bundle > .textarea;
+  }
+}
+//作用域
+@varr: red;
+#page {
+  @varr: white;
+  #header {
+    color: @varr; // white
+  }
+}
+#footer {
+  color: @varr; // red
+}
