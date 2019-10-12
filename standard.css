@@ -1,0 +1,92 @@
+/* css书写规范 */
+
+/* good */
+.mod-example {
+  /* 定位 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  /* 盒模型 */
+  display: block;
+  float: right;
+  width: 100px;
+  height: 100px;
+  margin: 15px auto;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  /* 排印 */
+  font: normal 13px "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+/* good 十六进制与rgb不要混用，统一使用十六进制表示法*/
+.mod-example {
+  color: #ccc;
+  background-color: #efefef;
+}
+
+/* good 除URL外，其余均用双引号*/
+body {
+  font-family: "open sans", arial, sans-serif;
+  background-image: url(http://taobao.com/);
+}
+/* good */
+.selector[type="text"] {
+  padding-left: 15px;
+}
+
+/* 对于自定义的 font-family 命名，必须使用业务域名前缀作为名字的开始，例如淘宝爱逛街的自定义字体 */
+/* bad */
+@font-face {
+  /* 爱逛街业务自定义字体 */
+  font-family: icon-font;
+  src: url(//at.alicdn.com/t/font_1426561436_1444216.eot);
+}
+/* good */
+@font-face {
+  /* 爱逛街业务自定义字体 */
+  font-family: guang-iconfont;
+  src: url(//at.alicdn.com/t/font_1426561436_1444216.eot);
+}
+
+/* base.css */
+.element {
+  width: 10px;
+}
+.element-avatar {
+  width: 10px;
+}
+.element-selected {
+  width: 10px;
+}
+/* 1 */
+@media (min-width: 480px) {
+  .element {
+    width: 20px;
+  }
+  .element-avatar {
+    width: 20px;
+  }
+  .element-selected {
+    width: 20px;
+  }
+}
+/* 2 */
+/* base-media-small.css */
+@media (min-width: 480px) {
+  .element {
+    width: 20px;
+  }
+  .element-avatar {
+    width: 20px;
+  }
+  .element-selected {
+    width: 20px;
+  }
+}

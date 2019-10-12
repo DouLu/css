@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    /* 
+    id 选择器 #
+标签选择器 span
+类名选择器 class-name
+伪类选择器 :last-child
+全局选择器 
+组合选择器 （使用逗号分开）
+继承选择器 （例如 div p）
+伪元素选择器 ::before
+属性选择器 （[属性名="属性值"]）[type="input"]
+
+选择器的优先级
+内联样式 1000
+id 选择器 100
+类和伪类 10
+元素选择器 1
+通配 \* 0 
+*/
+    .select:active {
+      color: #ccc;
+    }
+
+    .select:last-child {
+      color: #ccc;
+    }
+
+    .select::first-letter {
+      color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="select">12</div>
+</body>
+
+</html>
